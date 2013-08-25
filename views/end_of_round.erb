@@ -1,0 +1,32 @@
+<p>Dealer's Cards: <%= dhv %></p>
+<ul>
+  <% session[:dealer_cards].each do |card| %>
+    <li class='card'><img src=<%= jpg card %> alt=<%= card.to_s %>></li>
+  <% end %>
+</ul>
+<br />
+
+
+<p>Player's Cards: <%= phv %></p>
+<ul>
+  <% session[:player_cards].each do |card| %>
+    <li class='card'><img src=<%= jpg card %> alt=<%= card.to_s %>></li>
+  <% end %>
+  <br />
+</ul>
+<hr />
+<div class="row">
+  <form method="post" action="/play_again">
+    <div class="span2">
+      <input class="btn" type="submit" value="Play again!"></input>
+    </div>
+    <% unless @error %>
+      <div class="span2">
+        Bet: <input type="text" class="span1" name="player_bet" placeholder="5">
+      </div>
+    <% end %>
+    <div class="span1 pull-right">
+      <a href="/new_player">Quit</a>
+    </div>
+  </form>
+</div> <!-- #row -->

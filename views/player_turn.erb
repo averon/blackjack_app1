@@ -1,0 +1,30 @@
+<p>Dealer's Cards:</p>
+<ul>
+  <li class='card'><img src='/images/cards/cover.jpg'></li>
+  <li class='card'><img src=<%= jpg session[:dealer_cards][1] %> alt=<%= session[:dealer_cards][1].to_s %>></li>
+</ul>
+<br />
+
+
+<p>Player's Cards: <%= phv %></p>
+<ul>
+  <% session[:player_cards].each do |card| %>
+    <li class='card'><img src=<%= jpg card %> alt=<%= card.to_s %>></li>
+  <% end %>
+  <hr />
+  <div class="row">
+  	<div class="span1">
+      <form method="post" action="/hit">
+        <input class="btn" type="submit" value="Hit"></input>
+      </form>
+    </div>
+    <div class="span1">
+      <form method="post" action="/stay">
+        <input class="btn" type="submit" value="Stay"></input>
+      </form>
+    </div>
+    <div class="span1 pull-right">
+      <a href="/new_player">Quit</a>
+    </div>
+  </div>
+</ul>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My First App</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/application.css">
+  </head>
+  <body style="padding-top: 50px;">
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+            <ul class="nav">
+              <li><a href="/new_player">New Game</a></li>
+            </ul>
+            <%if session[:player_name]%>
+              <ul class="nav pull-right">
+                <li><a href="/new_player">Logout</a></li>
+              </ul>
+            <%end%>
+        </div>
+      </div>
+    </div>
+
+  <div class="container">
+    <h1>Blackjack.</h1>
+    <p>Welcome <%= session[:player_name] %></p>
+    <hr />
+    <%if @error%>
+      <div class="alert"><%=@error%></div>
+    <%elsif @success%>
+      <div class="alert alert-success"><%=@success%></div>
+    <%elsif @alert%>
+      <div class="alert alert-error"><%=@alert%></div>
+    <%elsif @info%>
+      <div class="alert alert-info"><%=@info%></div>
+    <% end %>
+      <%= yield %>
+  </div>
+  </body>
+</html>
